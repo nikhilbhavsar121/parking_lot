@@ -8,9 +8,6 @@ public class InputProcess
     {
        String[] cmdArray=command.split(" ");
 
-
-
-
     }
 
     public void fileInputProcess() throws IOException
