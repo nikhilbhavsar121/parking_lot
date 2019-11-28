@@ -8,6 +8,7 @@ public class InputProcess
 {
     CommandProcess commandprocess;
     ParkingLot parkingLot;
+
     public InputProcess()  {
         try {
         commandprocess=new CommandProcess();
@@ -15,10 +16,7 @@ public class InputProcess
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
-
     }
-
-
     public void fileTextInputProcess(String command)
     {
        String[] cmdArray=command.split(" ");
@@ -45,9 +43,21 @@ public class InputProcess
                 }
                 //Three element in command
                 case 3:
-                    Method method1 = commandprocess.commandMap.get(cmdArray[0]);
-
-
+                  Method  method1 = commandprocess.commandMap.get(cmdArray[0]);
+                    try {
+                        if(method1 != null)
+                        {
+                            method1.invoke(parkingLot, cmdArray[1],cmdArray[2]);
+                        }
+                        else
+                        {
+                            System.out.println("Invalid input");
+                        }
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
 
         }
 
