@@ -30,7 +30,7 @@ public class InputProcess
                         method1.invoke(parkingLot);
                     }else
                     {
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid Command");
                     }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -45,9 +45,14 @@ public class InputProcess
                     if(method2 != null)
                     {
                         method2.invoke(parkingLot, cmdArray[1]);
-                    }else
+
+                    }else if(Integer.parseInt(cmdArray[1]) < 0)
                     {
-                        System.out.println("Invalid input");
+                        System.out.println("please provide positive slot number");
+                    }
+                    else
+                    {
+                        System.out.println("Invalid Command");
                     }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -65,7 +70,7 @@ public class InputProcess
                         }
                         else
                         {
-                            System.out.println("Invalid input");
+                            System.out.println("Invalid Command");
                         }
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
@@ -77,15 +82,23 @@ public class InputProcess
 
     }
 
-    public void fileInputProcess() throws IOException
+    public void fileInputProcess(String filePath)
     {
-        File file = new File("E://ParkingLot//Inputfile//input.txt");
-        FileReader filereader = new FileReader(file);
-        BufferedReader br = new BufferedReader(filereader);
-        String line;
-        while((line=br.readLine())!= null)
-        {
-            fileTextInputProcess(line.trim());
+        File inputFile = new File(filePath);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(inputFile));
+            String line;
+            try {
+                while ((line = br.readLine()) != null) {
+                    fileTextInputProcess(line.trim());
+                }
+            } catch (IOException ex) {
+                System.out.println("Error in reading the input file.");
+                ex.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found in the path specified.");
+            e.printStackTrace();
         }
     }
 }

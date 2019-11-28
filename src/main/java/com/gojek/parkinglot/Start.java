@@ -9,7 +9,8 @@ public class Start
         switch(args.length)
         {
             case 0:
-                for(;;) {
+                for(;;)
+                {
                     System.out.println("Please Enter Input");
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
                     String cmd = bufferedReader.readLine();
@@ -18,7 +19,7 @@ public class Start
 
             case 1:
                 InputProcess inputParser=new InputProcess();
-                inputParser.fileInputProcess();
+                inputParser.fileInputProcess(args[0]);
 
         }
 
