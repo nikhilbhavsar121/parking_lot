@@ -22,13 +22,29 @@ public class InputProcess
         {
             //One element in command
             case 1:
+                Method method1 =commandprocess.commandMap.get(cmdArray[0]);
+
+                try {
+                    if(method1 != null)
+                    {
+                        method1.invoke(parkingLot);
+                    }else
+                    {
+                        System.out.println("Invalid input");
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                break;
                 //Two element in command
             case 2:
-                Method method =commandprocess.commandMap.get(cmdArray[0]);
+                Method method2 =commandprocess.commandMap.get(cmdArray[0]);
                 try {
-                    if(method != null)
+                    if(method2 != null)
                     {
-                        method.invoke(parkingLot, cmdArray[1]);
+                        method2.invoke(parkingLot, cmdArray[1]);
                     }else
                     {
                         System.out.println("Invalid input");
@@ -41,11 +57,11 @@ public class InputProcess
                 break;
                 //Three element in command
                 case 3:
-                  Method  method1 = commandprocess.commandMap.get(cmdArray[0]);
+                  Method  method3 = commandprocess.commandMap.get(cmdArray[0]);
                     try {
-                        if(method1 != null)
+                        if(method3 != null)
                         {
-                            method1.invoke(parkingLot, cmdArray[1],cmdArray[2]);
+                            method3.invoke(parkingLot, cmdArray[1],cmdArray[2]);
                         }
                         else
                         {
