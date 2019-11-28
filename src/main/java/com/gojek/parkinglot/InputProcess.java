@@ -10,12 +10,10 @@ public class InputProcess
     ParkingLot parkingLot;
 
     public InputProcess()  {
-        try {
+
         commandprocess=new CommandProcess();
             parkingLot=new ParkingLot();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+
     }
     public void fileTextInputProcess(String command)
     {
@@ -27,7 +25,6 @@ public class InputProcess
                 //Two element in command
             case 2:
                 Method method =commandprocess.commandMap.get(cmdArray[0]);
-
                 try {
                     if(method != null)
                     {
@@ -41,6 +38,7 @@ public class InputProcess
                 } catch (InvocationTargetException e) {
                     e.printStackTrace();
                 }
+                break;
                 //Three element in command
                 case 3:
                   Method  method1 = commandprocess.commandMap.get(cmdArray[0]);
@@ -73,8 +71,5 @@ public class InputProcess
         {
             fileTextInputProcess(line.trim());
         }
-
-
-
     }
 }
