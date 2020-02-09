@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 public class InputProcess
 {
     CommandProcess commandprocess;
-    ParkingLot parkingLot;
+    static ParkingLot parkingLot;
 
     public InputProcess()  {
 
